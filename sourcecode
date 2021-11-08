@@ -1,0 +1,33 @@
+
+import java.awt.Color;
+import java.awt.Robot;
+import java.awt.AWTException;
+import java.awt.MouseInfo;
+import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
+
+/**
+ *
+ * @author mosama
+ */
+public class x {
+
+    public static void main(String[] args) throws InterruptedException {
+        try {
+            Robot robot = new Robot();
+            while (true == true) {
+                TimeUnit.SECONDS.sleep(1 / 5);
+                double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
+                double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+                 Color color = robot.getPixelColor((int) mouseX, (int) mouseY);
+                if ((color.getRed() & color.getGreen() & color.getBlue() )<100) {
+                    robot.keyPress(KeyEvent.VK_SPACE);
+                    robot.keyRelease(KeyEvent.VK_SPACE);
+ 
+                }
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+}
